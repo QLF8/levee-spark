@@ -14,16 +14,211 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      conversations: {
+        Row: {
+          created_at: string
+          founder_id: string
+          id: string
+          investor_id: string
+          startup_id: string
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          founder_id: string
+          id?: string
+          investor_id: string
+          startup_id: string
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          founder_id?: string
+          id?: string
+          investor_id?: string
+          startup_id?: string
+          status?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "conversations_startup_id_fkey"
+            columns: ["startup_id"]
+            isOneToOne: false
+            referencedRelation: "startups"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      messages: {
+        Row: {
+          content: string
+          conversation_id: string
+          created_at: string
+          id: string
+          read: boolean
+          sender_id: string
+        }
+        Insert: {
+          content: string
+          conversation_id: string
+          created_at?: string
+          id?: string
+          read?: boolean
+          sender_id: string
+        }
+        Update: {
+          content?: string
+          conversation_id?: string
+          created_at?: string
+          id?: string
+          read?: boolean
+          sender_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "messages_conversation_id_fkey"
+            columns: ["conversation_id"]
+            isOneToOne: false
+            referencedRelation: "conversations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          bio: string | null
+          company_name: string | null
+          created_at: string
+          email: string
+          full_name: string | null
+          id: string
+          linkedin_url: string | null
+          updated_at: string
+        }
+        Insert: {
+          avatar_url?: string | null
+          bio?: string | null
+          company_name?: string | null
+          created_at?: string
+          email: string
+          full_name?: string | null
+          id: string
+          linkedin_url?: string | null
+          updated_at?: string
+        }
+        Update: {
+          avatar_url?: string | null
+          bio?: string | null
+          company_name?: string | null
+          created_at?: string
+          email?: string
+          full_name?: string | null
+          id?: string
+          linkedin_url?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      startups: {
+        Row: {
+          company_name: string
+          created_at: string
+          deck_url: string | null
+          description: string
+          founder_id: string
+          funding_amount: number
+          funding_type: string
+          id: string
+          industry: string
+          location: string
+          logo_url: string | null
+          stage: string
+          status: string
+          tagline: string
+          traction: string | null
+          updated_at: string
+          valuation: number | null
+          website_url: string | null
+        }
+        Insert: {
+          company_name: string
+          created_at?: string
+          deck_url?: string | null
+          description: string
+          founder_id: string
+          funding_amount: number
+          funding_type: string
+          id?: string
+          industry: string
+          location: string
+          logo_url?: string | null
+          stage: string
+          status?: string
+          tagline: string
+          traction?: string | null
+          updated_at?: string
+          valuation?: number | null
+          website_url?: string | null
+        }
+        Update: {
+          company_name?: string
+          created_at?: string
+          deck_url?: string | null
+          description?: string
+          founder_id?: string
+          funding_amount?: number
+          funding_type?: string
+          id?: string
+          industry?: string
+          location?: string
+          logo_url?: string | null
+          stage?: string
+          status?: string
+          tagline?: string
+          traction?: string | null
+          updated_at?: string
+          valuation?: number | null
+          website_url?: string | null
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "investor" | "founder"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +345,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "investor", "founder"],
+    },
   },
 } as const
