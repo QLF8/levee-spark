@@ -124,7 +124,7 @@ const FeaturedDeals = () => {
 
         {/* CTA */}
         <div className="text-center">
-          <Button variant="default" size="lg" className="group">
+          <Button variant="default" size="lg" className="group" onClick={() => window.location.href = '/deals'}>
             Voir tous les deals
             <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
           </Button>

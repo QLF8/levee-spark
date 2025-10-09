@@ -35,9 +35,9 @@ const Navbar = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
-            <a href="#deals" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
+            <button onClick={() => navigate("/deals")} className="text-sm font-medium text-foreground hover:text-primary transition-colors">
               Voir les deals
-            </a>
+            </button>
             <a href="#how-it-works" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
               Comment ça marche
             </a>
