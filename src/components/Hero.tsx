@@ -1,8 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, TrendingUp, Users, Zap } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import heroIllustration from "@/assets/hero-illustration.png";
 
 const Hero = () => {
+  const navigate = useNavigate();
+  
   return (
     <section className="relative pt-32 pb-20 sm:pt-40 sm:pb-28 overflow-hidden">
       {/* Background Gradient */}
@@ -34,11 +37,11 @@ const Hero = () => {
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button variant="hero" size="lg" className="group" onClick={() => window.location.href = '/deals'}>
+              <Button variant="hero" size="lg" className="group" onClick={() => navigate('/deals')}>
                 Voir les deals
                 <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
-              <Button variant="outline" size="lg" onClick={() => window.location.href = '/publish'}>
+              <Button variant="outline" size="lg" onClick={() => navigate('/publish')}>
                 Publier ma levée
               </Button>
             </div>

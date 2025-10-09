@@ -2,6 +2,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ArrowRight, MapPin, TrendingUp } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const deals = [
   {
@@ -51,6 +52,8 @@ const deals = [
 ];
 
 const FeaturedDeals = () => {
+  const navigate = useNavigate();
+  
   return (
     <section className="py-20 sm:py-28" id="deals">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -124,7 +127,7 @@ const FeaturedDeals = () => {
 
         {/* CTA */}
         <div className="text-center">
-          <Button variant="default" size="lg" className="group" onClick={() => window.location.href = '/deals'}>
+          <Button variant="default" size="lg" className="group" onClick={() => navigate('/deals')}>
             Voir tous les deals
             <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
           </Button>
