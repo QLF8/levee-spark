@@ -3,29 +3,32 @@ import { Menu } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { useEffect, useState } from "react";
-
 const Navbar = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState<any>(null);
-
   useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
+    supabase.auth.getSession().then(({
+      data: {
+        session
+      }
+    }) => {
       setUser(session?.user || null);
     });
-
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+    const {
+      data: {
+        subscription
+      }
+    } = supabase.auth.onAuthStateChange((_event, session) => {
       setUser(session?.user || null);
     });
-
     return () => subscription.unsubscribe();
   }, []);
-  return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+  return <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 bg-blue-700">
         <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo */}
           <div className="flex items-center">
-            <h1 className="text-xl sm:text-2xl font-bold text-primary-dark">
+            <h1 className="text-xl sm:text-2xl font-bold text-orange-500">
               Fundbridge
             </h1>
           </div>
@@ -45,8 +48,7 @@ const Navbar = () => {
 
           {/* CTA Buttons */}
           <div className="hidden md:flex items-center gap-3">
-            {user ? (
-              <>
+            {user ? <>
                 <Button variant="ghost" size="sm" onClick={() => navigate("/messages")}>
                   Messages
                 </Button>
@@ -56,17 +58,14 @@ const Navbar = () => {
                 <Button variant="ghost" size="sm" onClick={() => supabase.auth.signOut()}>
                   Déconnexion
                 </Button>
-              </>
-            ) : (
-              <>
+              </> : <>
                 <Button variant="ghost" size="sm" onClick={() => navigate("/auth")}>
                   Se connecter
                 </Button>
                 <Button variant="accent" size="sm" onClick={() => navigate("/auth")}>
                   Publier ma levée
                 </Button>
-              </>
-            )}
+              </>}
           </div>
 
           {/* Mobile Menu Button */}
@@ -75,8 +74,6 @@ const Navbar = () => {
           </Button>
         </div>
       </div>
-    </nav>
-  );
+    </nav>;
 };
-
 export default Navbar;
