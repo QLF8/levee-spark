@@ -26,7 +26,7 @@ const Navbar = () => {
           {/* Logo */}
           <div className="flex items-center">
             <h1 className="text-xl sm:text-2xl font-bold text-primary-dark">
-              LeveDesFonds
+              Fundbridge
             </h1>
           </div>
 

@@ -48,7 +48,7 @@ const Auth = () => {
 
       toast({
         title: "Connexion réussie",
-        description: "Bienvenue sur LeveDesFonds",
+        description: "Bienvenue sur Fundbridge",
       });
       navigate("/");
     } catch (error: any) {
@@ -125,8 +125,10 @@ const Auth = () => {
     <div className="min-h-screen flex items-center justify-center bg-surface px-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-heading mb-2">LeveDesFonds</h1>
-          <p className="text-muted">Accédez à votre compte</p>
+          <h1 className="text-3xl font-bold text-heading mb-2">Fundbridge</h1>
+          <p className="text-muted">
+            {isLogin ? "Accédez à votre compte" : "Rejoignez Fundbridge"}
+          </p>
         </div>
 
         <div className="bg-white rounded-lg shadow-card p-8">

@@ -7,7 +7,7 @@ const Footer = () => {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {/* Brand */}
           <div className="space-y-4">
-            <h3 className="text-2xl font-bold">LeveDesFonds</h3>
+            <h3 className="text-2xl font-bold">Fundbridge</h3>
             <p className="text-sm text-white/70">
               Le marketplace qui connecte startups et investisseurs en toute transparence.
             </p>
@@ -89,7 +89,7 @@ const Footer = () => {
         {/* Bottom */}
         <div className="pt-8 border-t border-white/10 text-center sm:text-left">
           <p className="text-sm text-white/50">
-            © 2025 LeveDesFonds. Tous droits réservés.
+            © 2025 Fundbridge. Tous droits réservés.
           </p>
         </div>
       </div>
