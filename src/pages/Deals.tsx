@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
-import { Card, CardContent, CardFooter } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/AppSidebar";
-import { Heart, MapPin, TrendingUp, Search, ExternalLink } from "lucide-react";
+import { Heart, MapPin, TrendingUp, Search, ExternalLink, SlidersHorizontal } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -165,129 +165,167 @@ const Deals = () => {
           <AppSidebar />
           
           <main className="flex-1">
-            <div className="container mx-auto px-4 py-8">
-              {/* Header */}
-              <div className="flex items-center gap-4 mb-8">
-                <SidebarTrigger />
-                <div className="flex-1">
-                  <h1 className="text-3xl font-bold mb-2">
-                    {industry || stage || "Toutes les opportunités"}
-                  </h1>
-                  <p className="text-muted-foreground">
-                    {filteredStartups.length} startup{filteredStartups.length > 1 ? "s" : ""} disponible{filteredStartups.length > 1 ? "s" : ""}
-                  </p>
+            {/* Sticky Header */}
+            <div className="border-b border-border bg-card sticky top-16 z-40">
+              <div className="container mx-auto px-4 py-4">
+                <div className="flex items-center justify-between gap-4 flex-wrap">
+                  <div className="flex items-center gap-3">
+                    <SidebarTrigger className="flex lg:hidden">
+                      <Button variant="outline" size="icon">
+                        <SlidersHorizontal className="h-5 w-5" />
+                      </Button>
+                    </SidebarTrigger>
+                    
+                    <div>
+                      <h1 className="text-xl md:text-2xl font-bold text-foreground">
+                        {industry || stage || "Toutes les opportunités"}
+                      </h1>
+                      <p className="text-sm text-muted-foreground">
+                        {filteredStartups.length} {filteredStartups.length > 1 ? 'annonces' : 'annonce'}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Search Bar */}
+                  <div className="relative w-full sm:w-auto sm:min-w-[300px]">
+                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                    <Input
+                      type="text"
+                      placeholder="Rechercher..."
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                      className="pl-10 bg-surface border-border rounded-full h-10"
+                    />
+                  </div>
                 </div>
               </div>
+            </div>
 
-              {/* Search Bar */}
-              <div className="relative mb-8">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                <Input
-                  type="text"
-                  placeholder="Rechercher une startup..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-10"
-                />
-              </div>
-
-              {/* Startups Grid */}
+            {/* Content Area */}
+            <div className="container mx-auto px-4 py-6">
               {loading ? (
-                <div className="text-center py-12">
-                  <p className="text-muted-foreground">Chargement...</p>
+                <div className="text-center py-16">
+                  <div className="inline-block h-10 w-10 animate-spin rounded-full border-4 border-solid border-primary border-r-transparent"></div>
+                  <p className="text-muted-foreground mt-4 text-lg">Chargement des annonces...</p>
                 </div>
               ) : filteredStartups.length === 0 ? (
-                <div className="text-center py-12">
-                  <p className="text-muted-foreground">Aucune startup trouvée</p>
+                <div className="text-center py-16">
+                  <div className="text-7xl mb-4">🔍</div>
+                  <h3 className="text-2xl font-bold text-foreground mb-2">Aucune annonce trouvée</h3>
+                  <p className="text-muted-foreground text-lg">Essayez de modifier vos critères de recherche</p>
                 </div>
               ) : (
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4">
                   {filteredStartups.map((startup) => (
-                    <Card key={startup.id} className="flex flex-col shadow-card hover:shadow-card-hover transition-all duration-base">
-                      <CardContent className="p-6 flex-1">
-                        {/* Header with Logo and Favorite */}
-                        <div className="flex items-start justify-between mb-4">
-                          <div className="w-16 h-16 bg-gradient-to-br from-primary/10 to-accent/10 rounded-xl flex items-center justify-center text-3xl">
+                    <Card 
+                      key={startup.id} 
+                      className="overflow-hidden hover:shadow-card-hover transition-all duration-base border border-border group cursor-pointer"
+                    >
+                      <div className="p-5 flex flex-col h-full">
+                        {/* Header - Logo + Favorite */}
+                        <div className="flex items-start justify-between mb-3">
+                          <div className="flex items-center gap-3 flex-1 min-w-0">
                             {startup.logo_url ? (
-                              <img src={startup.logo_url} alt={startup.company_name} className="w-full h-full object-cover rounded-xl" />
+                              <img 
+                                src={startup.logo_url} 
+                                alt={startup.company_name}
+                                className="w-14 h-14 rounded-xl object-cover border border-border flex-shrink-0"
+                              />
                             ) : (
-                              startup.company_name.charAt(0)
+                              <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center flex-shrink-0">
+                                <span className="text-white font-bold text-xl">
+                                  {startup.company_name.charAt(0)}
+                                </span>
+                              </div>
                             )}
+                            <div className="flex-1 min-w-0">
+                              <h3 className="font-bold text-base text-foreground truncate group-hover:text-primary transition-colors">
+                                {startup.company_name}
+                              </h3>
+                              <p className="text-xs text-muted-foreground line-clamp-1">
+                                {startup.tagline}
+                              </p>
+                            </div>
                           </div>
+                          
                           <Button
                             variant="ghost"
                             size="icon"
-                            onClick={() => toggleFavorite(startup.id)}
-                            className="hover:bg-transparent"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              toggleFavorite(startup.id);
+                            }}
+                            className="flex-shrink-0 hover:bg-surface -mr-2"
                           >
-                            <Heart
-                              className={`h-5 w-5 ${
-                                favorites.has(startup.id)
-                                  ? "fill-accent text-accent"
-                                  : "text-muted-foreground"
+                            <Heart 
+                              className={`h-5 w-5 transition-all ${
+                                favorites.has(startup.id) 
+                                  ? 'fill-accent text-accent scale-110' 
+                                  : 'text-muted-foreground hover:text-accent hover:scale-110'
                               }`}
                             />
                           </Button>
                         </div>
 
-                        {/* Content */}
-                        <div className="space-y-3">
-                          <div>
-                            <h3 className="text-lg font-bold text-foreground mb-1">
-                              {startup.company_name}
-                            </h3>
-                            <p className="text-sm text-muted-foreground line-clamp-2">
-                              {startup.tagline}
-                            </p>
-                          </div>
+                        {/* Price Tag - Prominent like Leboncoin */}
+                        <div className="mb-3">
+                          <span className="text-2xl font-bold text-accent">
+                            {formatAmount(startup.funding_amount)}
+                          </span>
+                        </div>
 
-                          {/* Amount & Stage */}
-                          <div className="flex items-center gap-2">
-                            <span className="text-xl font-bold text-primary">
-                              {formatAmount(startup.funding_amount)}
-                            </span>
-                            <Badge variant="secondary" className="text-xs">
-                              {startup.stage}
-                            </Badge>
-                          </div>
+                        {/* Description */}
+                        <p className="text-sm text-muted-foreground mb-3 line-clamp-2 flex-grow">
+                          {startup.description}
+                        </p>
 
-                          {/* Metadata */}
-                          <div className="space-y-2 pt-2 border-t border-border">
-                            <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                              <MapPin className="h-3.5 w-3.5" />
-                              <span>{startup.location}</span>
-                            </div>
-                            {startup.traction && (
-                              <div className="flex items-center gap-2 text-sm font-medium text-foreground">
-                                <TrendingUp className="h-3.5 w-3.5 text-accent" />
-                                <span className="line-clamp-1">{startup.traction}</span>
-                              </div>
-                            )}
-                          </div>
-
-                          {/* Industry Badge */}
-                          <Badge className="bg-surface text-foreground hover:bg-surface/80">
+                        {/* Tags */}
+                        <div className="flex flex-wrap gap-1.5 mb-3">
+                          <Badge variant="secondary" className="text-xs">
                             {startup.industry}
                           </Badge>
+                          <Badge variant="outline" className="text-xs">
+                            {startup.stage}
+                          </Badge>
                         </div>
-                      </CardContent>
 
-                      <CardFooter className="p-6 pt-0 flex gap-2">
-                        <Button variant="default" className="flex-1" size="sm">
-                          Voir le deal
-                        </Button>
-                        {startup.website_url && (
-                          <Button
-                            variant="outline"
-                            size="icon"
-                            asChild
+                        {/* Metadata */}
+                        <div className="space-y-1.5 pb-3 border-b border-border">
+                          <div className="flex items-center text-xs text-muted-foreground">
+                            <MapPin className="h-3.5 w-3.5 mr-1.5 flex-shrink-0" />
+                            <span className="truncate">{startup.location}</span>
+                          </div>
+                          {startup.traction && (
+                            <div className="flex items-center text-xs text-muted-foreground">
+                              <TrendingUp className="h-3.5 w-3.5 mr-1.5 flex-shrink-0 text-primary" />
+                              <span className="truncate">{startup.traction}</span>
+                            </div>
+                          )}
+                        </div>
+
+                        {/* Actions */}
+                        <div className="flex gap-2 mt-3">
+                          <Button 
+                            size="sm" 
+                            className="flex-1 text-xs bg-primary hover:bg-primary/90 font-medium"
                           >
-                            <a href={startup.website_url} target="_blank" rel="noopener noreferrer">
-                              <ExternalLink className="h-4 w-4" />
-                            </a>
+                            Voir l'annonce
                           </Button>
-                        )}
-                      </CardFooter>
+                          {startup.website_url && (
+                            <Button 
+                              variant="outline" 
+                              size="sm" 
+                              className="text-xs"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                window.open(startup.website_url, '_blank');
+                              }}
+                            >
+                              <ExternalLink className="h-3.5 w-3.5" />
+                            </Button>
+                          )}
+                        </div>
+                      </div>
                     </Card>
                   ))}
                 </div>
