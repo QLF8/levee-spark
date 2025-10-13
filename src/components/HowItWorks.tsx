@@ -27,8 +27,8 @@ const steps = [
   {
     number: "04",
     icon: Handshake,
-    title: "Investis",
-    description: "Finalise ton investissement avec nos outils de suivi intégrés.",
+    title: "Conclue",
+    description: "Finalisez le deal avec des contrats clairs entre investisseur et chef de projet.",
     color: "accent",
   },
 ];
