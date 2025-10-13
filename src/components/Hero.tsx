@@ -22,8 +22,8 @@ const Hero = () => {
 
             {/* Main Heading */}
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
-              Les startups qui lèvent,{" "}
-              <span className="gradient-text">devant tes yeux</span>
+              Fundbridge,{" "}
+              <span className="gradient-text">de vos idées à la réalité</span>
             </h1>
 
             {/* Description */}
