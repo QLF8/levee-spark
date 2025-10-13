@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, TrendingUp, Users, Zap } from "lucide-react";
+import { TrendingUp, Users, Zap, Briefcase, Lightbulb } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import heroIllustration from "@/assets/hero-illustration.png";
 
@@ -56,12 +56,21 @@ const Hero = () => {
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button variant="hero" size="lg" className="group" onClick={() => navigate('/deals')}>
-                Voir les deals
-                <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+              <Button 
+                size="lg" 
+                className="group bg-[#004aad] hover:bg-[#003d8f] text-white" 
+                onClick={() => navigate('/auth')}
+              >
+                <Briefcase className="h-5 w-5" />
+                Je suis investisseur
               </Button>
-              <Button variant="outline" size="lg" onClick={() => navigate('/publish')}>
-                Publier ma levée
+              <Button 
+                variant="accent" 
+                size="lg" 
+                onClick={() => navigate('/auth')}
+              >
+                <Lightbulb className="h-5 w-5" />
+                J'ai un projet
               </Button>
             </div>
 

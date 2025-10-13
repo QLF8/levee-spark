@@ -122,20 +122,24 @@ const Auth = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-surface px-4">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-surface to-background px-4 py-12">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-heading mb-2">Fundbridge</h1>
-          <p className="text-muted">
-            {isLogin ? "Accédez à votre compte" : "Rejoignez Fundbridge"}
+          <h1 className="text-4xl font-bold text-foreground mb-2">Fundbridge</h1>
+          <p className="text-lg text-muted-foreground">
+            {isLogin ? "Connectez-vous à votre compte" : "Rejoignez la communauté"}
           </p>
         </div>
 
-        <div className="bg-white rounded-lg shadow-card p-8">
+        <div className="bg-card rounded-2xl shadow-card-hover border border-border p-8">
           <Tabs value={isLogin ? "login" : "signup"} onValueChange={(v) => setIsLogin(v === "login")}>
-            <TabsList className="grid w-full grid-cols-2 mb-6">
-              <TabsTrigger value="login">Connexion</TabsTrigger>
-              <TabsTrigger value="signup">Inscription</TabsTrigger>
+            <TabsList className="grid w-full grid-cols-2 mb-8 bg-surface">
+              <TabsTrigger value="login" className="data-[state=active]:bg-primary data-[state=active]:text-white">
+                Connexion
+              </TabsTrigger>
+              <TabsTrigger value="signup" className="data-[state=active]:bg-primary data-[state=active]:text-white">
+                Inscription
+              </TabsTrigger>
             </TabsList>
 
             <TabsContent value="login">
@@ -162,7 +166,12 @@ const Auth = () => {
                     required
                   />
                 </div>
-                <Button type="submit" className="w-full" disabled={loading}>
+                <Button 
+                  type="submit" 
+                  className="w-full bg-[#004aad] hover:bg-[#003d8f]" 
+                  size="lg"
+                  disabled={loading}
+                >
                   {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                   Se connecter
                 </Button>
@@ -227,7 +236,13 @@ const Auth = () => {
                     </SelectContent>
                   </Select>
                 </div>
-                <Button type="submit" className="w-full" disabled={loading}>
+                <Button 
+                  type="submit" 
+                  variant="accent" 
+                  className="w-full" 
+                  size="lg"
+                  disabled={loading}
+                >
                   {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                   Créer mon compte
                 </Button>
