@@ -7,14 +7,33 @@ const Hero = () => {
   const navigate = useNavigate();
   
   return (
-    <section className="relative pt-32 pb-20 sm:pt-40 sm:pb-28 overflow-hidden">
-      {/* Background Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-surface/50 to-background -z-10" />
-      
+    <section className="relative pt-24 pb-16 sm:pt-32 sm:pb-20 overflow-hidden bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Content */}
-          <div className="space-y-8">
+        <div className="grid lg:grid-cols-2 gap-8 items-center">
+          {/* Left - Bridge Image */}
+          <div className="relative order-2 lg:order-1">
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+              <img 
+                src={heroIllustration} 
+                alt="Fundbridge - Connecting startups with investors" 
+                className="w-full h-auto"
+              />
+            </div>
+            
+            {/* Floating Card */}
+            <div className="absolute -bottom-6 -right-6 bg-card p-4 rounded-xl shadow-card-hover border border-border hidden lg:block">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-lg" />
+                <div>
+                  <div className="text-sm font-semibold text-foreground">TechCo SaaS</div>
+                  <div className="text-xs text-muted-foreground">Lève €2M • Seed</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Right - Content on white background */}
+          <div className="space-y-8 order-1 lg:order-2">
             {/* Badge */}
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-surface rounded-full border border-primary/20">
               <Zap className="h-4 w-4 text-accent" />
@@ -24,9 +43,9 @@ const Hero = () => {
             </div>
 
             {/* Main Heading */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
-              Les startups qui lèvent,{" "}
-              <span className="gradient-text">devant tes yeux</span>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-foreground">
+              Fundbridge,{" "}
+              <span className="gradient-text">de vos idées à la réalité</span>
             </h1>
 
             {/* Description */}
@@ -65,28 +84,6 @@ const Hero = () => {
                 <div>
                   <div className="text-2xl font-bold text-foreground">850+</div>
                   <div className="text-sm text-muted-foreground">Investisseurs actifs</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Right Image */}
-          <div className="relative">
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-              <img 
-                src={heroIllustration} 
-                alt="Startups connecting with investors" 
-                className="w-full h-auto"
-              />
-            </div>
-            
-            {/* Floating Card */}
-            <div className="absolute -bottom-6 -left-6 bg-card p-4 rounded-xl shadow-card-hover border border-border hidden lg:block">
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-lg" />
-                <div>
-                  <div className="text-sm font-semibold text-foreground">TechCo SaaS</div>
-                  <div className="text-xs text-muted-foreground">Lève €2M • Seed</div>
                 </div>
               </div>
             </div>

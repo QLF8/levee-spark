@@ -32,7 +32,7 @@ const Navbar = () => {
       navigate(`/deals?search=${encodeURIComponent(searchQuery)}`);
     }
   };
-  return <nav className="sticky top-0 left-0 right-0 z-50 bg-primary border-b border-primary/20 shadow-lg">
+  return <nav className="sticky top-0 left-0 right-0 z-50 bg-[#004aad] border-b border-white/10 shadow-lg">
       <div className="container mx-auto px-4">
         {/* Main Navigation Bar */}
         <div className="flex items-center justify-between h-16 gap-4">

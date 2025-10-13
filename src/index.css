@@ -22,6 +22,7 @@ All colors MUST be HSL.
     --primary: 214 100% 52%;
     --primary-foreground: 0 0% 100%;
     --primary-dark: 214 85% 15%;
+    --navbar-blue: 214 100% 34%; /* #004aad */
     
     /* Surface & Backgrounds */
     --surface: 214 100% 95%;
