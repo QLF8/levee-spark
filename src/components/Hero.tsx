@@ -44,7 +44,7 @@ const Hero = () => {
             {/* Stats */}
             <div className="flex flex-wrap gap-8 pt-12">
               <div className="flex items-center gap-3 py-0 px-px mx-[9px] my-0">
-                <div className="p-2 bg-primary/10 rounded-lg">
+                <div className="p-2 bg-primary/10 rounded-lg mx-0 px-[10px]">
                   <TrendingUp className="h-5 w-5 text-primary" />
                 </div>
                 <div>
@@ -56,13 +56,13 @@ chaque jour</div>
               </div>
               
               <div className="flex items-center gap-3">
-                <div className="p-2 bg-accent/10 rounded-lg px-[8px]">
+                <div className="p-2 bg-accent/10 rounded-lg py-[8px] px-[10px]">
                   <Users className="h-5 w-5 text-accent" />
                 </div>
                 <div>
                   <div className="text-2xl font-bold text-foreground">
                 </div>
-                  <div className="text-sm text-muted-foreground rounded-lg bg-transparent">Des Investisseurs actifs</div>
+                  <div className="text-sm text-muted-foreground rounded-lg bg-transparent">   Des Investisseurs actifs</div>
                 </div>
               </div>
             </div>
