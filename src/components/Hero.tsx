@@ -50,8 +50,7 @@ const Hero = () => {
                 <div>
                   <div className="text-2xl font-bold text-foreground">
                 </div>
-                  <div className="text-sm text-muted-foreground">De nouveaux projet 
-chaque jour</div>
+                  <div className="text-sm text-muted-foreground">De nouveaux projets chaque jour</div>
                 </div>
               </div>
               
