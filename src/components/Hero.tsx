@@ -75,14 +75,29 @@ const Hero = () => {
             {/* Floating Card */}
             <div className="bg-card/80 backdrop-blur-sm p-6 rounded-xl shadow-card-hover border border-border">
               <div className="flex items-center gap-4 mb-4">
-                <div className="w-16 h-16 bg-gradient-to-br from-primary to-accent rounded-lg" />
+                <div className="w-16 h-16 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center text-2xl font-bold text-white">
+                  AI
+                </div>
                 <div>
-                  <div className="text-lg font-semibold text-foreground">Deal en cours</div>
-                  <div className="text-sm text-muted-foreground">TechCo SaaS - €2M</div>
+                  <div className="text-lg font-semibold text-foreground">TechFlow AI</div>
+                  <div className="text-sm text-muted-foreground">SaaS • Paris</div>
                 </div>
               </div>
-              <div className="h-2 bg-surface rounded-full overflow-hidden">
-                <div className="h-full w-3/4 bg-gradient-to-r from-primary to-accent" />
+              <p className="text-sm text-foreground/80 mb-4">
+                Plateforme d'automatisation IA pour les PME. Recherche 100K€ pour 8% de la société.
+              </p>
+              <div className="space-y-2">
+                <div className="flex justify-between text-sm">
+                  <span className="text-muted-foreground">Objectif</span>
+                  <span className="font-semibold text-foreground">100 000€</span>
+                </div>
+                <div className="h-2 bg-surface rounded-full overflow-hidden">
+                  <div className="h-full w-3/4 bg-gradient-to-r from-primary to-accent" />
+                </div>
+                <div className="flex justify-between text-xs text-muted-foreground">
+                  <span>75 000€ levés</span>
+                  <span>75%</span>
+                </div>
               </div>
             </div>
           </div>
