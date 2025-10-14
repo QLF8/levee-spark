@@ -32,8 +32,8 @@ const Hero = () => {
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button variant="hero" size="lg" className="group" onClick={() => navigate('/deals')}>
-                Voir les deals
+              <Button variant="hero" size="lg" className="group" onClick={() => navigate('/auth')}>
+                J'ai un projet
                 <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
               <Button variant="outline" size="lg" onClick={() => navigate('/publish')}>
