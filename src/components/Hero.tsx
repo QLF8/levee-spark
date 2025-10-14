@@ -7,11 +7,7 @@ const Hero = () => {
   return <section className="relative pt-32 pb-20 sm:pt-40 sm:pb-28 overflow-hidden">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 -z-10">
-        <img 
-          src={heroIllustration} 
-          alt="Bridge illustration representing connections" 
-          className="w-full h-full object-cover opacity-50"
-        />
+        <img src={heroIllustration} alt="Bridge illustration representing connections" className="w-full h-full object-cover opacity-50" />
         <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background/80" />
       </div>
       
@@ -20,12 +16,7 @@ const Hero = () => {
           {/* Left Content */}
           <div className="space-y-8">
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-surface rounded-full border border-primary/20">
-              <Zap className="h-4 w-4 text-accent" />
-              <span className="text-sm font-semibold text-foreground">
-                Plus de 120 deals actifs
-              </span>
-            </div>
+            
 
             {/* Main Heading */}
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
