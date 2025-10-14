@@ -49,7 +49,7 @@ const Hero = () => {
                 </div>
                 <div>
                   <div className="text-2xl font-bold text-foreground">€45M+</div>
-                  <div className="text-sm text-muted-foreground">Levés en 2024</div>
+                  <div className="text-sm text-muted-foreground">De nouveaux projet chaque jour</div>
                 </div>
               </div>
               
