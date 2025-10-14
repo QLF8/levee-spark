@@ -36,8 +36,8 @@ const Hero = () => {
                 J'ai un projet
                 <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
-              <Button variant="outline" size="lg" onClick={() => navigate('/publish')}>
-                Publier ma levée
+              <Button variant="default" size="lg" onClick={() => navigate('/auth')}>
+                Je cherche à investir
               </Button>
             </div>
 
