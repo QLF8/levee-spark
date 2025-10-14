@@ -61,7 +61,10 @@ const Hero = () => {
                 <div>
                   <div className="text-2xl font-bold text-foreground">
                 </div>
-                  <div className="text-sm text-muted-foreground rounded-lg bg-transparent">Des investisseurs actifs. Prêts à découvrir les projets de demain.</div>
+                  <div className="text-sm text-muted-foreground rounded-lg bg-transparent">
+                    Des investisseurs actifs.<br />
+                    Prêts à découvrir les projets de demain.
+                  </div>
                 </div>
               </div>
             </div>
