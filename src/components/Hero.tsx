@@ -25,7 +25,7 @@ const Hero = () => {
             </h1>
 
             {/* Description */}
-            <p className="text-lg sm:text-xl text-muted-foreground max-w-xl">
+            <p className="text-lg max-w-xl text-orange-600 sm:text-xl">
               Connecte-toi aux meilleures opportunités early-stage en Europe. 
               Transparence totale, process rapide, deals vérifiés.
             </p>
