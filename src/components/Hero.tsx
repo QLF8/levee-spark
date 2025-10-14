@@ -25,7 +25,7 @@ const Hero = () => {
             </h1>
 
             {/* Description */}
-            <p className="text-lg max-w-xl text-orange-600 sm:text-xl">
+            <p className="text-lg max-w-xl sm:text-xl text-slate-950">
               Connecte-toi aux meilleures opportunités early-stage en Europe. 
               Transparence totale, process rapide, deals vérifiés.
             </p>
@@ -43,23 +43,26 @@ const Hero = () => {
 
             {/* Stats */}
             <div className="flex flex-wrap gap-8 pt-4">
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3 py-0 px-px mx-[9px] my-0">
                 <div className="p-2 bg-primary/10 rounded-lg">
                   <TrendingUp className="h-5 w-5 text-primary" />
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-foreground">€45M+</div>
-                  <div className="text-sm text-muted-foreground">De nouveaux projet chaque jour</div>
+                  <div className="text-2xl font-bold text-foreground">
+                </div>
+                  <div className="text-sm text-muted-foreground">De nouveaux projet 
+chaque jour</div>
                 </div>
               </div>
               
               <div className="flex items-center gap-3">
-                <div className="p-2 bg-accent/10 rounded-lg">
+                <div className="p-2 bg-accent/10 rounded-lg px-[8px]">
                   <Users className="h-5 w-5 text-accent" />
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-foreground">850+</div>
-                  <div className="text-sm text-muted-foreground">Investisseurs actifs</div>
+                  <div className="text-2xl font-bold text-foreground">
+                </div>
+                  <div className="text-sm text-muted-foreground rounded-lg bg-transparent">Des Investisseurs actifs</div>
                 </div>
               </div>
             </div>
