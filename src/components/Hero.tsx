@@ -42,7 +42,7 @@ const Hero = () => {
             </div>
 
             {/* Stats */}
-            <div className="flex flex-wrap gap-8 pt-4">
+            <div className="flex flex-wrap gap-8 pt-12">
               <div className="flex items-center gap-3 py-0 px-px mx-[9px] my-0">
                 <div className="p-2 bg-primary/10 rounded-lg">
                   <TrendingUp className="h-5 w-5 text-primary" />
