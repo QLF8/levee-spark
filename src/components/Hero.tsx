@@ -5,8 +5,15 @@ import heroIllustration from "@/assets/hero-illustration.png";
 const Hero = () => {
   const navigate = useNavigate();
   return <section className="relative pt-32 pb-20 sm:pt-40 sm:pb-28 overflow-hidden">
-      {/* Background Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-surface/50 to-background -z-10" />
+      {/* Background Image with Overlay */}
+      <div className="absolute inset-0 -z-10">
+        <img 
+          src={heroIllustration} 
+          alt="Bridge illustration representing connections" 
+          className="w-full h-full object-cover opacity-20"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/70 to-background" />
+      </div>
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -67,20 +74,19 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Right Image */}
-          <div className="relative">
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-              <img src={heroIllustration} alt="Startups connecting with investors" className="w-full h-auto" />
-            </div>
-            
+          {/* Right Visual Element */}
+          <div className="relative hidden lg:block">
             {/* Floating Card */}
-            <div className="absolute -bottom-6 -left-6 bg-card p-4 rounded-xl shadow-card-hover border border-border hidden lg:block">
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-lg" />
+            <div className="bg-card/80 backdrop-blur-sm p-6 rounded-xl shadow-card-hover border border-border">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="w-16 h-16 bg-gradient-to-br from-primary to-accent rounded-lg" />
                 <div>
-                  <div className="text-sm font-semibold text-foreground">TechCo SaaS</div>
-                  
+                  <div className="text-lg font-semibold text-foreground">Deal en cours</div>
+                  <div className="text-sm text-muted-foreground">TechCo SaaS - €2M</div>
                 </div>
+              </div>
+              <div className="h-2 bg-surface rounded-full overflow-hidden">
+                <div className="h-full w-3/4 bg-gradient-to-r from-primary to-accent" />
               </div>
             </div>
           </div>
