@@ -27,10 +27,9 @@ const Auth = () => {
   const [role, setRole] = useState<"investor" | "founder">("investor");
 
   useEffect(() => {
+    // Check session but don't auto-redirect to allow interaction
     supabase.auth.getSession().then(({ data: { session } }) => {
-      if (session) {
-        navigate("/");
-      }
+      // Session check without redirect
     });
   }, [navigate]);
 
