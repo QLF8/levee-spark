@@ -128,7 +128,7 @@ const Auth = () => {
       <div className="absolute top-0 left-0 right-0 z-10 p-6">
         <button 
           onClick={() => navigate("/")}
-          className="flex items-center gap-3 ml-auto hover:opacity-80 transition-opacity"
+          className="flex items-center gap-3 hover:opacity-80 transition-opacity"
         >
           <img src={logo} alt="Fundbridge" className="w-10 h-10 object-contain rounded-xl" />
           <span className="text-white font-semibold text-lg">Fundbridge</span>
