@@ -73,7 +73,7 @@ const Auth = () => {
           emailRedirectTo: `${window.location.origin}/`,
           data: {
             full_name: fullName,
-            company_name: companyName,
+            company_name: role === "founder" ? companyName : null,
           },
         },
       });
@@ -88,7 +88,7 @@ const Auth = () => {
             id: data.user.id,
             email: signupEmail,
             full_name: fullName,
-            company_name: companyName,
+            company_name: role === "founder" ? companyName : null,
           });
 
         if (profileError) throw profileError;
@@ -264,19 +264,19 @@ const Auth = () => {
                         required
                       />
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div className="space-y-2">
-                        <Label htmlFor="full-name" className="text-gray-700 font-medium">Nom complet</Label>
-                        <Input
-                          id="full-name"
-                          type="text"
-                          value={fullName}
-                          onChange={(e) => setFullName(e.target.value)}
-                          placeholder="Jean Dupont"
-                          className="h-12 border-gray-300 focus:border-[#FF6B35] focus:ring-[#FF6B35] transition-all duration-300"
-                          required
-                        />
-                      </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="full-name" className="text-gray-700 font-medium">Nom complet</Label>
+                      <Input
+                        id="full-name"
+                        type="text"
+                        value={fullName}
+                        onChange={(e) => setFullName(e.target.value)}
+                        placeholder="Jean Dupont"
+                        className="h-12 border-gray-300 focus:border-[#FF6B35] focus:ring-[#FF6B35] transition-all duration-300"
+                        required
+                      />
+                    </div>
+                    {role === "founder" && (
                       <div className="space-y-2">
                         <Label htmlFor="company-name" className="text-gray-700 font-medium">Société</Label>
                         <Input
@@ -289,7 +289,7 @@ const Auth = () => {
                           required
                         />
                       </div>
-                    </div>
+                    )}
                     <div className="space-y-2">
                       <Label htmlFor="role" className="text-gray-700 font-medium">Je suis</Label>
                       <Select value={role} onValueChange={(v: "investor" | "founder") => setRole(v)}>
