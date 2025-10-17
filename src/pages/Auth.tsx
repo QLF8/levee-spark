@@ -124,6 +124,17 @@ const Auth = () => {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,107,53,0.3),transparent_50%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(0,74,173,0.4),transparent_50%)]" />
       
+      {/* Header with Logo */}
+      <div className="absolute top-0 left-0 right-0 z-10 p-6">
+        <button 
+          onClick={() => navigate("/")}
+          className="flex items-center gap-3 ml-auto hover:opacity-80 transition-opacity"
+        >
+          <img src={logo} alt="Fundbridge" className="w-10 h-10 object-contain rounded-xl" />
+          <span className="text-white font-semibold text-lg">Fundbridge</span>
+        </button>
+      </div>
+      
       {/* Animated Floating Elements */}
       <div className="absolute top-20 left-10 w-20 h-20 bg-[#FF6B35] rounded-full opacity-20 animate-pulse" />
       <div className="absolute top-40 right-20 w-32 h-32 bg-[#004aad] rounded-full opacity-20 animate-pulse delay-75" />
