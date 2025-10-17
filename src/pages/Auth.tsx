@@ -174,7 +174,7 @@ const Auth = () => {
             <div className="bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/20 p-8 md:p-10">
               <div className="text-center mb-8">
                 <div className="inline-flex items-center justify-center w-16 h-16 mb-4">
-                  <img src={logo} alt="Fundbridge Logo" className="w-16 h-16 object-contain" />
+                  <img src={logo} alt="Fundbridge Logo" className="w-16 h-16 object-contain rounded-2xl" />
                 </div>
                 <h2 className="text-3xl font-bold text-gray-900 mb-2">Fundbridge</h2>
                 <p className="text-gray-600">
